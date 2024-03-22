@@ -49,8 +49,8 @@ Make sure to have these prerequisites installed and configured correctly before 
    git clone [https://github.com/Amalvc/Apiwiz-assignment.git]
    ```
 
-### 2. Open in IntelliJ or Spring Tool Suite (STS):
-- Open IntelliJ IDEA or Spring Tool Suite.
+### 2. Open in IntelliJ :
+- Open IntelliJ IDEA .
 - Import the project by selecting the project directory.
 - Allow the IDE to download dependencies and configure the project.
 
@@ -93,7 +93,7 @@ Make sure to replace "apiwiz" with your preferred database name.
       auth.token.jwtSecret=secret_key
   ```
 
-### 5. Run the Application in IntelliJ or Spring Tool Suite:
+### 5. Run the Application in IntelliJ :
 - In your IDE, locate the main application class (typically named `Application` or similar).
 - Right-click on the main class and select "Run" or "Debug" to start the application.
 - Wait for the application to start. You should see console output indicating that the application has started successfully.
@@ -151,15 +151,15 @@ Make sure to replace "apiwiz" with your preferred database name.
 
 **2. Any one can register new account, but all registered users have Role USER**
 
-**3. Super admin can promote a user to ADMIN role; there is a separate API for doing this**
+**3. Super admin can promote a user to ADMIN role, there is a separate API for doing this**
 
-**4. Admin and super admin can create a new task for a user; initially, the status of the task is pending**
+**4. Admin and super admin can create a new task for a user, initially, the status of the task is pending**
 
 **5. Admin and super admin can update the status of a task**
 
-**6. Everyone can fetch tasks, but users can only fetch their tasks; however, admins can access all tasks**
+**6. Everyone can fetch tasks, but users can only fetch their tasks, however, admins can access all tasks**
 
-**7. Pagination, sorting, filtering are added for the get task API; multiple filters and sorts can be added in ascending or descending order**
+**7. Pagination, sorting, filtering are added for the get task API, multiple filters and sorts can be added in ascending or descending order**
 
 **8. Admins and super admins can perform task deletion**
 
@@ -195,6 +195,9 @@ Make sure to replace "apiwiz" with your preferred database name.
     - API Endpoint: `/api/auth/assign-admin/{userId}`
     
     - Input and response:
+      ![assign real req](https://github.com/Amalvc/WishListManagement/assets/88286507/bcc0ee90-4335-4982-beb1-aedad1c4ce32)
+
+      ![assign req](https://github.com/Amalvc/WishListManagement/assets/88286507/80535e3a-373f-45ba-8ce5-94194b458c1c)
      
 
 4. **Create Task**
@@ -212,7 +215,7 @@ Make sure to replace "apiwiz" with your preferred database name.
 
     - Description: Fetches tasks for a specific user. Admins and super_admins can fetch all tasks, while users can only access their own. Supports pagination, sorting, and filtering by date, title, and status.
     
-    - API Endpoint: `/api/tasks`
+    - API Endpoint Example: `/api/tasks/user/{userId}?page=0&size=10&sortBy=dueDate&sortDirection=desc&titleFilter=coding&statusFilter=PENDING`
     
     - Input and response:
       ![get without req](https://github.com/Amalvc/WishListManagement/assets/88286507/a0d80813-62e2-42bd-9a30-890a61c2c96f)
@@ -297,7 +300,7 @@ Unit test cases have been created to ensure the functionality and reliability of
 4. **Run Test Files**:
    - Inside each folder, you'll find test files corresponding to different components or functionalities of your application.
    - You can run individual test files by selecting them and clicking the "Run" button.
-   - Alternatively, if you want to run entire test suites, you can select the main test file (e.g., `WishlistApplicationTests`) and click the "Run" button.
+   - Alternatively, if you want to run entire test suites, you can select the main test file (e.g., `ApiwizApplicationTests`) and click the "Run" button.
 
 5. **Review Test Results**:
    - After running the tests, IntelliJ IDEA will display the test results in the console.
@@ -305,5 +308,4 @@ Unit test cases have been created to ensure the functionality and reliability of
 
 By following these steps, you can efficiently run and validate the unit test cases for your application, ensuring its robustness and reliability.
 
-# Thank You
 
