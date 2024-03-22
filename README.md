@@ -144,7 +144,7 @@ Make sure to replace "apiwiz" with your preferred database name.
 | start_date   | datetime     |
 | due_date     | datetime     |
 | status       | enum         |
-| role_id      | bigint       |
+| user_id      | bigint       |
 
 ## Code Flow
 
