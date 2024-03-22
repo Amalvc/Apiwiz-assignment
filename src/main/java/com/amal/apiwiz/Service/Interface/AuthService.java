@@ -5,6 +5,7 @@ import com.amal.apiwiz.Dto.LoginDto;
 import com.amal.apiwiz.Dto.LoginResponseDto;
 import com.amal.apiwiz.Dto.SignupResponseDto;
 import com.amal.apiwiz.Exception.NotFoundException;
+import com.amal.apiwiz.Exception.RoleNotFoundException;
 
 /**
  * Interface defining authentication service operations.
@@ -32,6 +33,7 @@ public interface AuthService {
      *
      * @param userId - ID of the user to be assigned as an administrator
      * @throws NotFoundException - If the specified user is not found
+     * @throws RoleNotFoundException - If role is not present in db
      */
-    void assignUserToAdmin(Long userId) throws NotFoundException;
+    void assignUserToAdmin(Long userId) throws NotFoundException, RoleNotFoundException;
 }

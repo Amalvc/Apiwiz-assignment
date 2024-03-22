@@ -2,6 +2,7 @@ package com.amal.apiwiz.Controller;
 
 import com.amal.apiwiz.Dto.*;
 import com.amal.apiwiz.Exception.NotFoundException;
+import com.amal.apiwiz.Exception.RoleNotFoundException;
 import com.amal.apiwiz.Service.Implementation.AuthServiceImpl;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -66,7 +67,7 @@ public class AuthController {
      */
     @PutMapping("/assign-admin/{userId}")
     @PreAuthorize("hasAuthority('SUPER_ADMIN')")
-    public ResponseEntity<?> assignUserToAdmin(@PathVariable Long userId) throws NotFoundException {
+    public ResponseEntity<?> assignUserToAdmin(@PathVariable Long userId) throws NotFoundException, RoleNotFoundException {
         log.info("Received request to change role from USER to ADMIN.");
 
         authService.assignUserToAdmin(userId);

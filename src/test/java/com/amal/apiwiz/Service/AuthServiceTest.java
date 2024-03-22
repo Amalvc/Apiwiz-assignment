@@ -4,6 +4,7 @@ import com.amal.apiwiz.Dto.LoginDto;
 import com.amal.apiwiz.Dto.LoginResponseDto;
 import com.amal.apiwiz.Dto.SignupResponseDto;
 import com.amal.apiwiz.Exception.NotFoundException;
+import com.amal.apiwiz.Exception.RoleNotFoundException;
 import com.amal.apiwiz.Model.Role;
 import com.amal.apiwiz.Model.User;
 import com.amal.apiwiz.Repository.RoleRepository;
@@ -111,18 +112,13 @@ class AuthServiceTest {
         assertEquals(1L, response.getId());
         assertEquals("amal@gmail.com", response.getEmail());
         assertEquals("Amal", response.getFirstName());
-        //assertNotNull(response.getJwt()); // Ensure JWT token is not null
 
         // Verify that userRepository.findByEmail was called with the correct email
         verify(userRepository).findByEmail("amal@gmail.com");
-        // Verify that authenticationManager.authenticate was called with the correct arguments
-        //verify(authenticationManager).authenticate(any(UsernamePasswordAuthenticationToken.class));
-        // Verify that SecurityContextHolder.getContext().setAuthentication was called
-        //verify(authentication).setAuthenticated(true);
     }
 
     @Test
-    void testAssignUserToAdmin() throws NotFoundException {
+    void testAssignUserToAdmin() throws NotFoundException, RoleNotFoundException {
         // Mock user and admin role
         User user = new User();
         user.setId(1L);

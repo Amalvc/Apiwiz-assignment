@@ -86,27 +86,17 @@ public class GlobalExceptionHandler {
         ResponseEntity responseEntity = new ResponseEntity(responseDTO, HttpStatus.BAD_REQUEST);
         return responseEntity;
     }
-
     /**
-     * Handles the exception when jwt token is invalid or expired.
+     * Handles the exception when role is not found.
      */
-    @ExceptionHandler({InvalidJwtTokenException.class})
-    public ResponseEntity handleInvalidJwtException() {
-        log.error("Invalid JWT token");
+    @ExceptionHandler({RoleNotFoundException.class})
+    public ResponseEntity handleRoleNotFoundException() {
+        log.error("Role not found");
 
-        CommonResponseDto responseDTO = new CommonResponseDto(false, 401, "Jwt token is invalid or expired", null);
-        ResponseEntity responseEntity = new ResponseEntity(responseDTO, HttpStatus.UNAUTHORIZED);
+        CommonResponseDto responseDTO = new CommonResponseDto(false, 404, "Role not found", null);
+        ResponseEntity responseEntity = new ResponseEntity(responseDTO, HttpStatus.NOT_FOUND);
         return responseEntity;
     }
-    /**
-     * Handles the exception when a runtime exception occurs.
-     */
-    @ExceptionHandler({RuntimeException.class})
-    public ResponseEntity handleRuntimeException(RuntimeException ex) {
-        log.error("Runtime Exception occurred: {}", ex.getMessage(), ex);
-
-        CommonResponseDto responseDTO = new CommonResponseDto(false, HttpStatus.INTERNAL_SERVER_ERROR.value(), "Internal Server Error", null);
-        return new ResponseEntity<>(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+    
 
 }

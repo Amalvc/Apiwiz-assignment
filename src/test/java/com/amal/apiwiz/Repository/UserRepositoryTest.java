@@ -63,6 +63,5 @@ public class UserRepositoryTest {
         assertThat(foundUser.getEmail()).isEqualTo(user.getEmail());
         assertThat(foundUser.getFirstName()).isEqualTo(user.getFirstName());
         assertThat(foundUser.getLastName()).isEqualTo(user.getLastName());
-        // Add assertions for other user details if needed
     }
 }

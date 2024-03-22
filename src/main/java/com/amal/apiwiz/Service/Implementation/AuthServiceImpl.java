@@ -7,6 +7,7 @@ import com.amal.apiwiz.Dto.LoginResponseDto;
 import com.amal.apiwiz.Dto.SignupResponseDto;
 import com.amal.apiwiz.Exception.InvalidCredentialException;
 import com.amal.apiwiz.Exception.NotFoundException;
+import com.amal.apiwiz.Exception.RoleNotFoundException;
 import com.amal.apiwiz.Exception.UserAlreadyExistsException;
 import com.amal.apiwiz.Model.Role;
 import com.amal.apiwiz.Model.User;
@@ -15,7 +16,6 @@ import com.amal.apiwiz.Repository.UserRepository;
 import com.amal.apiwiz.Security.Jwt.JwtUtils;
 import com.amal.apiwiz.Service.Interface.AuthService;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -63,6 +63,9 @@ public class AuthServiceImpl implements AuthService {
 
         //fetching role 'USER' from db which is already added in database
         Role role=roleRepository.findByName("USER");
+        if(role==null){
+           throw new RoleNotFoundException();
+        }
 
         // Constructs a new user object from the userDto
         User user=User.builder().firstName(userDto.getFirstName()).
@@ -124,7 +127,7 @@ public class AuthServiceImpl implements AuthService {
      * @param userId - ID of the user to be assigned the ADMIN role
      * @throws NotFoundException - If the user with the specified ID is not found or if the ADMIN role is not found
      */
-    public void assignUserToAdmin(Long userId) throws NotFoundException {
+    public void assignUserToAdmin(Long userId) throws NotFoundException, RoleNotFoundException {
         // Retrieve the user by ID,If user is not found then throws NotFoundException
         Optional<User> userOptional = userRepository.findById(userId);
         if (userOptional.isEmpty()) {
@@ -136,7 +139,7 @@ public class AuthServiceImpl implements AuthService {
         // Retrieve admin role from db
         Role adminRole = roleRepository.findByName("ADMIN");
         if (adminRole == null) {
-            throw new NotFoundException();
+            throw new RoleNotFoundException();
         }
 
         // Assign admin role to the user

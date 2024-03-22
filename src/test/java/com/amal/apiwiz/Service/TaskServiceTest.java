@@ -7,7 +7,6 @@ import com.amal.apiwiz.Dto.CreateTaskDto;
 import com.amal.apiwiz.Dto.TaskPageResponse;
 import com.amal.apiwiz.Dto.UpdateTaskDto;
 import com.amal.apiwiz.Enum.Status;
-import com.amal.apiwiz.Exception.DateException;
 import com.amal.apiwiz.Exception.NotFoundException;
 import com.amal.apiwiz.Exception.TaskNotFoundRException;
 import com.amal.apiwiz.Model.Task;
@@ -45,7 +44,6 @@ class TaskServiceTest {
 
     @BeforeEach
     void setUp() {
-        // You can add any setup needed for your tests here
     }
 
     @Test
