@@ -46,7 +46,7 @@ Make sure to have these prerequisites installed and configured correctly before 
 ### 1. Clone this repository and navigate to the project folder:
 
    ```sh
-   git clone [https://github.com/Amalvc/Apiwiz-assignment.git]
+   git clone https://github.com/Amalvc/Apiwiz-assignment.git
    ```
 
 ### 2. Open in IntelliJ :
